@@ -1,0 +1,52 @@
+{% include 'layout.html' %}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height:100vh;">
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h4 class="text-center mb-4">Login</h4>
+
+                    <form id="loginForm"> 
+
+                        <!-- Username -->
+                        <div class="form-group">
+                            <input type="text"
+                                   class="form-control"
+                                   name="username"
+                                   placeholder="Username"
+                                   required>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <input type="password"
+                                   class="form-control"
+                                   name="password"
+                                   placeholder="Password"
+                                   required>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Login
+                        </button>
+
+                    </form>
+
+                    <!-- Register link -->
+                    <p class="text-center mt-3 mb-0">
+                        Not registered?
+                        <a href="/auth/register-page">Create an account</a>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

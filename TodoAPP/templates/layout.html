@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!-- Bootstrap 4.3.1 CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', path='/css/bootstrap.css')}}">
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', path='/css/base.css')}}">
+    <!--always put the bootstrap file top because the browser picks which rule to apply based on which comes last-->
+    <title> TodoApp </title>
+</head>
+
+<body class="bg-light">
+
+    {% include 'navbar.html' %}
+    {% block content %}
+    
+    {% endblock %}
+    <script src="{{ url_for('static', path='/js/jquery-slim.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/popper.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/base.js') }}" defer></script>
+
+</body>
+</html>
