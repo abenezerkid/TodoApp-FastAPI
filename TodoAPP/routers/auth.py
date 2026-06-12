@@ -10,6 +10,10 @@ from sqlalchemy.orm import Session
 from starlette import status
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from fastapi.templating import Jinja2Templates
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 router = APIRouter(
      prefix='/auth',
@@ -18,7 +22,7 @@ router = APIRouter(
 
 bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated= 'auto')
 
-SECRET_KEY = 'fhjsbfjh477849hahiufpok7f'
+SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = 'HS256'
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='auth/login')

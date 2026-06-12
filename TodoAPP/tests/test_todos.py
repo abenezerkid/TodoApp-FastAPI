@@ -53,19 +53,19 @@ def add_todo ():
 
 
 def test_todos_func (add_todo):
-    response = client.get('/todo')
+    response = client.get('/todos')
     assert response.status_code == status.HTTP_200_OK
     assert response.json() ==[{"id":1,"title":"Test","description":"Test","priority":3,"complete": False, "owner_id":1}]
 
 
 def test_todoid (add_todo):
-    response = client.get ('/todo/1')
+    response = client.get ('/todos/1')
     assert response.status_code == status.HTTP_200_OK
     assert response.json() =={"id":1,"title":"Test","description":"Test","priority":3,"complete": False, "owner_id":1}
 
 def test_create (add_todo):
     json_data = {"title":"Abenezer","description":"Gizaw","priority":3,"complete": True}
-    response = client.post('/todo/add_todo', json=json_data)
+    response = client.post('/todos/add_todo', json=json_data)
     assert response.status_code == status.HTTP_201_CREATED
     db = TestSessionLocal()
     item = db.query(Todos). filter (Todos.id==2).first ()
@@ -74,7 +74,7 @@ def test_create (add_todo):
 
 def test_update (add_todo):
     json_data = {"title":"Abenezer","description":"Gizaw","priority":3,"complete": True}
-    response = client.put('/todo/update_todo/1',json= json_data)
+    response = client.put('/todos/update_todo/1',json= json_data)
     assert response.status_code == status.HTTP_204_NO_CONTENT
     db = TestSessionLocal()
     item = db.query (Todos).filter(Todos.id ==1).first()
@@ -83,14 +83,14 @@ def test_update (add_todo):
 
 def test_update_not_found (add_todo):
     json_data = {"title":"Abenezer","description":"Gizaw","priority":3,"complete": True}
-    response = client.put('/todo/update_todo/45',json= json_data)
+    response = client.put('/todos/update_todo/45',json= json_data)
     assert response.status_code == 404
     assert response.json()== {'detail': 'Item not found'}
 
 
     
 def test_delete (add_todo):
-    response = client.delete('/todo/delete_todo/1')
+    response = client.delete('/todos/delete_todo/1')
     assert response.status_code == status.HTTP_204_NO_CONTENT
     db = TestSessionLocal()
     items = db.query(Todos).all()
